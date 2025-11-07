@@ -1,11 +1,29 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Walk from "../components/Walk.astro";
+import walkBg from "../assets/walk.webp";
+import { Image } from "astro:assets";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const h1 = "text-9xl font-extrabold text-pink-600 xl:px-40 px-10";
 ---
 
 <Layout>
-	<Welcome />
+  <div
+    class="h-full w-full flex sm:flex-row flex-col md:space-y-0 items-center justify-center relative"
+  >
+    <div class="-mt-50 flex lg:flex-row flex-col items-center justify-center">
+      <h1 class:list={[h1, "z-10"]}>BEHIND</h1>
+      <h1 class:list={[h1, "z-50"]}>FRONT</h1>
+    </div>
+
+    <div class="absolute h-full w-full">
+      <Image
+        src={walkBg}
+        alt="Background"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+      />
+      <Walk />
+    </div>
+  </div>
 </Layout>
